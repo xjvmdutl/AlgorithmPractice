@@ -1,4 +1,4 @@
-package backJun;
+package backJun.greedy;
 
 import java.io.BufferedReader;
 import java.io.IOException;
