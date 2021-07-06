@@ -15,22 +15,23 @@ public class ¹ÚÅÍ¶ß¸®±â {
 	}
 
 	private static int solution(int n, int k) {
-		int sum = 0;
-		int middle = n/k;
-		int halfLength = k/2;
-		int start = middle - halfLength;
-		
-		if(start<1)
-			return -1;
-		int end = middle + halfLength;
-		System.out.println();
-		if((end-start+1) % 2 == 0)
-			start += 1;
-		if((end-start+1) * middle <n)
-			end++;
-		
-		return end-start;
-		
+		for(int i=1;i<k+1;i++) {
+            n-=i;
+            if(n < 0) {
+                break;
+            }
+        } 
+		StringBuilder sb= new StringBuilder();
+		if(n >=0) {
+            if(n%k > 0) {
+                sb.append(k);
+            }else {
+                sb.append(k-1);
+            }
+        }else {
+            sb.append(-1);
+        }
+		return Integer.parseInt(sb.toString());
 	}
 
 }
