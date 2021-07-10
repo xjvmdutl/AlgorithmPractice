@@ -11,42 +11,66 @@ public class 볼모으기 {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		int n = Integer.parseInt(reader.readLine());
 		char[] arr = new char[n];
-		String[] strs = reader.readLine().split("");
-		for(int i =0;i<n;++i)
-			arr[i] = strs[i].charAt(0);
-		//System.out.println(solution(arr,n,'B'));
-		System.out.println(solution(arr,n,'R'));		
+		String strs = reader.readLine();
+		System.out.println(solution(strs,n));		
 	}
 
-	private static int solution(char[] arr, int n,char collor) {
-		int answer = 0;
-		for(int i=0;i<arr.length;++i) {
-			char c = arr[i];
-			Stack<Character> stack = new Stack<>();
-			if(c == collor) {
-				stack.push(c);
-				for(int j=i+1;j<arr.length;++j) {
-					if(c==arr[j]) {
-						stack.push(arr[j]);
-					}else {
-						break;
-					}
-				}
-				if(!stack.isEmpty()) {
-					swap(arr,i,i+stack.size());
-					answer++;
-				}
-			}
-			
+	private static int solution(String colors, int N) {
+		int result = N;
+		int rCnt = 0;
+		int bCnt = 0;
+		
+		for(int i=0; i<N; i++) {
+			if(colors.charAt(i)=='R') 
+				rCnt ++;
+			else
+				bCnt ++;
 		}
 		
-		return answer;
-	}
-
-	private static void swap(char[] arr,int i, int j) {
-		char tmp = arr[i];
-		arr[i] = arr[j];
-		arr[j] = tmp;
+		int cnt = 0;
+		// 4가지 경우
+		// 1. R만 움직여서 RRRBBB(R을 다 왼쪽으로)
+		for(int i=0; i<N; i++) {
+			if(colors.charAt(i)=='R')
+				cnt++;
+			else
+				break;
+		}
+		result = Math.min(result, rCnt-cnt);
+		
+		// 2. R만 움직여서 BBBRRR
+		cnt = 0;
+		for(int i=N-1; i>=0; i--) {
+			if(colors.charAt(i)=='R')
+				cnt++;
+			else
+				break;
+		}
+		
+		result = Math.min(result, rCnt-cnt);
+		
+		// 3. B만 움직여서 BBBRRR
+		cnt = 0;
+		for(int i=0; i<N; i++) {
+			if(colors.charAt(i)=='B')
+				cnt++;
+			else
+				break;
+		}
+		result = Math.min(result, bCnt-cnt);
+		
+		// 4. B만 움직여서RRRBBB
+		cnt = 0;
+		for(int i=N-1; i>=0; i--) {
+			if(colors.charAt(i)=='B')
+				cnt++;
+			else
+				break;
+		}
+		
+		result = Math.min(result, bCnt-cnt);
+		
+		return result;
 	}
 
 }
