@@ -9,8 +9,8 @@ public class º≥≈¡πË¥ﬁ {
 		int num = sc.nextInt();
 		System.out.println(solution(num));
 	}
-
-
+	
+	
 	private static int solution(int num) {
 		int cnt = -1;
 		for(int i=0;i<=num/5;++i) {
@@ -18,8 +18,6 @@ public class º≥≈¡πË¥ﬁ {
 			if(tmp != -1)
 				cnt = tmp+i;
 		}
-		
-
 		return cnt;
 	}
 	private static int permulate(int num,int cnt) {
