@@ -8,36 +8,40 @@ public class 캥거루세마리2 {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		
-		while(true) {
-			String str = reader.readLine();
-			if(str == "")
-				break;
-			String[] strs = str.split(" ");
-			int[] arr = new int[strs.length];
-			for(int i=0;i<arr.length;++i) {
-				arr[i] = Integer.parseInt(strs[i]);
-			}
-			System.out.println(solution(arr));
+		String str;
+		while((str = reader.readLine()) != null ) {
+            String[] strs = str.split(" ");
+            int[] arr = new int[strs.length];
+            for(int i=0;i<3;++i) {
+                arr[i] = Integer.parseInt(strs[i]);
+            }
+            System.out.println(solution(arr));
 		}
 	}
 
 	private static int solution(int[] arr) {
 		int answer = 0;
-		
-		while(true) {
-			int middle = arr[1];
-			if(middle - arr[0] == 1
-					&& arr[2] - middle == 1)
-				break;
-			if(arr[1] - middle < arr[2] - middle) {
-				arr[0] = arr[1];
-				arr[1] = arr[1]+1;
-			}else {
-				arr[2] = arr[1];
-				arr[1] = arr[2]-1;
+		int left = arr[0];
+		int right = arr[2];
+		int mid = arr[1];
+		if(mid - left > right - mid) {
+			while(true) {
+				int tmp = mid;
+				right = tmp;
+				mid = mid -1;
+				if(left == mid)
+					break;
+				answer++;
 			}
-			answer++;
+		}else {
+			while(true) {
+				int tmp = mid;
+				left = tmp;
+				mid = mid + 1;
+				if(right == mid)
+					break;
+				answer++;
+			}
 		}
 		
 		return answer;
