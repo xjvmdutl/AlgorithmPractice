@@ -55,6 +55,7 @@ public class За·Д {
 	        }
 	    }
 		return 1;
+		
 	}
 
 	private static boolean isSameMatrix(int[][] arr1, int[][] arr2) {
