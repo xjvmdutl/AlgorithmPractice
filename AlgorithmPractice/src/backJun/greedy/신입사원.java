@@ -25,16 +25,12 @@ public class 신입사원 {
 
 	private static int solution(int[] arr) {
 		int answer = 1;
+		int score = arr[0];
 		for(int i=1;i<arr.length;++i) {
-			boolean flag = true;
-			for(int j = i-1;j>=0;--j ) {
-				if(arr[i] > arr[j] ) {
-					flag = false;
-					break;
-				}
-			}
-			if(flag)
+			if(score > arr[i]) {
+				score = arr[i];
 				answer++;
+			}
 		}
 		
 		return answer;

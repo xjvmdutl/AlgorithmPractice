@@ -18,12 +18,22 @@ public class 단어수학 {
 
 	private static int solution(String[] str, int n) {
 		int answer = 0;
-		char[] data = new char[10];
-		Arrays.sort(str,(o1,o2)->o2.length()-o1.length());
-		for(int i=0;i<str.length-1;++i) {
-			if(str[i].length() > str[i+1].length()) {
-				
+		int[] data = new int['Z' - 'A' +1];
+		for(int i=0;i<str.length;++i) {
+			int l = 1;
+			for(int j=str[i].length()-1;j>=0;--j) {
+				char c = str[i].charAt(j);
+				data[c - 'A'] += l;
+				l*=10;
 			}
+		}
+		
+		int[] reverse = Arrays.stream(data).boxed().sorted((o1,o2)->o2-o1).mapToInt(Integer::intValue).toArray();
+		int index = 9;
+		for(int i=0;i<reverse.length;++i) {
+			if(reverse[i] == 0)
+				break;
+			answer += reverse[i] * index--;
 		}
 		return answer;
 	}
