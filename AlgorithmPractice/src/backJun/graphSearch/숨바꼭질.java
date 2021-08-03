@@ -1,4 +1,4 @@
-package backJun.stepBystep.graphSearch;
+package backJun.graphSearch;
 
 import java.io.BufferedReader;
 import java.io.IOException;
