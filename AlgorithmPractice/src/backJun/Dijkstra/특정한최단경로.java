@@ -41,6 +41,7 @@ public class 특정한최단경로 {
 			int b = Integer.parseInt(tokens.nextToken())-1;
 			int c = Integer.parseInt(tokens.nextToken());
 			list[a].add(new Node01(b,c));
+			
 			list[b].add(new Node01(a,c));
 		}
 		tokens = new StringTokenizer(reader.readLine());
