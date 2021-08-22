@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class 전자레인지 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
 		int t = sc.nextInt();
 		System.out.println(solution(t));
