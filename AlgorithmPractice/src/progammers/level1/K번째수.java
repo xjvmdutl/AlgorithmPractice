@@ -20,7 +20,6 @@ public class K¹øÂ°¼ö {
         return answer;
 	}
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 	}
 
