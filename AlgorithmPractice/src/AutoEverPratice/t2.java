@@ -1,4 +1,4 @@
-package kakaoPay;
+package AutoEverPratice;
 
 import java.util.Arrays;
 
