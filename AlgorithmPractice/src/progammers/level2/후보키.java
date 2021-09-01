@@ -8,9 +8,10 @@ import java.util.Set;
 public class 후보키 {
 	public static boolean[] visited;
 	public static List<HashSet<Integer>> list;
+	public static String[][] datas;
 	public static int solution(String[][] relation) {
         
-        String[][] datas = new String[relation[0].length][relation.length];
+        datas = new String[relation[0].length][relation.length];
         for(int i =0;i<relation.length;++i) {
         	for(int j=0;j<relation[i].length;++j) {
         		datas[j][i]= relation[i][j];
@@ -55,17 +56,12 @@ public class 후보키 {
 		Set<String> data= new HashSet<>();
 		for(int i=0;i<relation[0].length;++i) {
 			String key = "";
-			
 			for(int c : keySet) {
-				
 				key += relation[c][i];
-				
-					
 			}
 			if(data.contains(key)) return false;
 			data.add(key);
 		}
-		
 		return true;
 	}
 	public static void main(String[] args) {
@@ -79,6 +75,14 @@ public class 후보키 {
 							  ,{"500","muzi","music","3"}
 							  ,{"600","apeach","music","2"}};
 		System.out.println(solution(relation));
+		String[][] relation2 = {
+				{"100","100","ryan","music","2"}
+				, {"200","200","apeach","math","2"}
+				, {"300","300","tube","computer","3"}
+				, {"400","400","con","computer","4"}
+				, {"500","500","muzi","music","3"}, 
+				 {"600","600","apeach","music","2"}};
+		System.out.println(solution(relation2));
 	}
 
 }

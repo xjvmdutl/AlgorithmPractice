@@ -52,10 +52,12 @@ public class 괄호회전하기 {
 		String s2 = "}]()[{";
 		String s3 = "[)(]";
 		String s4 = "}}}";
+		String s5 = "{{{{{{}";
 		System.out.println(solution(s1));
 		System.out.println(solution(s2));
 		System.out.println(solution(s3));
 		System.out.println(solution(s4));
+		System.out.println(solution(s5));
 	}
 
 }
