@@ -13,13 +13,13 @@ public class 분수찾기 {
 	}
 
 	private static String solution(int x) {
-		int n = 0;
+		int n = 1;
 		int sum =0;
 		while(sum < x ) {
-			n++;
 			sum+=n;
+			n++;
 		}
-		sum -= n;
+		sum -= --n;
 		StringBuilder sb= new StringBuilder();
 		for(int i=1;i<=n;++i) {
 			sum++;
@@ -32,6 +32,7 @@ public class 분수찾기 {
 					break;
 				}
 			}
+			
 		}
 		
 		return sb.toString();
