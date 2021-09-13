@@ -1,21 +1,19 @@
-package progammers.level2.review;
+package progammers.golevelkit.greedy;
 
 public class 조이스틱 {
 	public static int solution(String name) {
-        int answer = 0;
+		int answer = 0;
         int len = name.length();
         int min = len - 1;
     	for(int i=0;i<name.length();++i) {
         	char c = name.charAt(i);
-        	int n1 = c - 'A';
-        	int n2 = 'Z' - c + 1;
-        	int mov = Math.min(n1, n2);
+        	int mov = Math.min(c - 'A','Z' - c + 1);
         	answer += mov;
         	int nextIdx = i+1;
         	while(nextIdx < name.length() && name.charAt(nextIdx) == 'A') {
         		nextIdx++;
         	}
-        	min = Math.min(min,(i*2) + len -nextIdx);
+        	min = Math.min(min,i+i+ len - nextIdx);//첫 i = 현재까지 왔다가 //두번째 i = 다시 돌아간다
         }
     	answer+=min; 
         return answer;
@@ -28,4 +26,5 @@ public class 조이스틱 {
 		System.out.println(solution("JEROEN"));
 		System.out.println(solution("JAN"));
 	}
+
 }
