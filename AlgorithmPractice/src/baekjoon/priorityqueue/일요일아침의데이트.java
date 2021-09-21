@@ -72,6 +72,7 @@ public class 일요일아침의데이트 {
 				}
 			}
 		}
+		
 		bfs(arr,startX,startY,n,m);
 		sb.append(gc + " " +gsc);
 		return sb.toString();
