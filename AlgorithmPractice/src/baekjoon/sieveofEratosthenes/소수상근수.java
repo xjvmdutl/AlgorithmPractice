@@ -1,4 +1,4 @@
-package baekjoon.SieveofEratosthenes;
+package baekjoon.sieveofEratosthenes;
 
 import java.io.BufferedReader;
 import java.io.IOException;

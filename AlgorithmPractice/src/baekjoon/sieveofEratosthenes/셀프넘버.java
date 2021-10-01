@@ -1,4 +1,4 @@
-package baekjoon.SieveofEratosthenes;
+package baekjoon.sieveofEratosthenes;
 
 public class ¼¿ÇÁ³Ñ¹ö {
 

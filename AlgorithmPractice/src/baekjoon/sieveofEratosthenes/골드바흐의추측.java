@@ -1,13 +1,12 @@
-package baekjoon.SieveofEratosthenes;
+package baekjoon.sieveofEratosthenes;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class 베르트랑공준 {
+public class 골드바흐의추측 {
 	public static boolean[] sosu;
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -23,27 +22,31 @@ public class 베르트랑공준 {
 
 	private static String solution(List<Integer> list) {
 		StringBuilder sb = new StringBuilder();
-		sosu = new boolean[123456*2+1];
+		sosu = new boolean[1000001];
 		sosu[1] = true;
-		for(int i =2; i <= 123456*2;++i) {
-			if(sosu[i]) {
+		for(int i=2;i<=1000000;++i) {
+			if(sosu[i])
 				continue;
-			}
-			for(int j=i+i;j<=123456*2;j+=i) {
+			for(int j=i+i;j<=1000000;j+=i) {
 				sosu[j] = true;
 			}
 		}
 		for(int i=0;i<list.size();++i) {
-			int start = list.get(i);
-			int end = list.get(i)*2;
-			int count = 0;
-			for(int j=start+1;j<=end;++j) {
-				if(!sosu[j])
-					count++;
+			int num = list.get(i);
+			boolean flag = true;
+			for(int j=2;j<=num/2;++j) {
+				if(!sosu[j] && !sosu[num-j]) {
+					flag = false;
+					sb.append(num + " = " + j + " + " + (num-j) + "\n");
+					break;
+				}
 			}
-			sb.append(count+"\n");
+			if(flag) {
+				sb.append("Goldbach's conjecture is wrong" + "\n");
+			}
 		}
-		return sb.delete(sb.length()-1, sb.length()).toString();
+		
+		return sb.toString();
 	}
 
 }
