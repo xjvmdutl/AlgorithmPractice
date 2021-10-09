@@ -2,7 +2,7 @@ package AutoEverPratice;
 
 import java.util.Arrays;
 
-public class t3 {
+public class test04 {
 	public static boolean flag;
 	 public static boolean[] solution(int[][] p, int[][] q) {
         boolean[] answer = new boolean[p.length];

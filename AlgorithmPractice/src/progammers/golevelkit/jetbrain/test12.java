@@ -16,7 +16,7 @@ class Point{
 	}
 	
 }
-public class test2 {
+public class test12 {
 	public static boolean[][][] visit;
 	public static HashSet<List<Point>> set;
 	public static List<Integer> result;

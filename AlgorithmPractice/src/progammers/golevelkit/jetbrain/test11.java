@@ -3,7 +3,7 @@ package progammers.golevelkit.jetbrain;
 import java.util.HashSet;
 import java.util.Set;
 
-public class test1 {
+public class test11 {
 	public int solution(int[] numbers) {
         int answer = 0;
         Set<Integer> set = new HashSet<>();

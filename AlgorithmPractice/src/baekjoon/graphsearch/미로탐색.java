@@ -7,10 +7,10 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-class point{
+class Point04{
 	int x;
 	int y;
-	public point(int x,int y) {
+	public Point04(int x,int y) {
 		this.x = x;
 		this.y = y;
 	}
@@ -39,7 +39,7 @@ public class 미로탐색 {
 	//  dfs는 시간초과 -> bfs로 풀어야된다.
 	private static int solution(int[][] arr, int n, int m) {
 		answer = Integer.MAX_VALUE;
-		point p = new point(0, 0);
+		Point04 p = new Point04(0, 0);
 		visited = new boolean[n][m];
 		visited[0][0] = true;
 		dfs(arr,n-1,m-1,p,0);
@@ -47,7 +47,7 @@ public class 미로탐색 {
 		return answer;
 	}
 
-	private static void dfs(int[][] arr, int n, int m,point p,int cnt) {
+	private static void dfs(int[][] arr, int n, int m,Point04 p,int cnt) {
 		if(p.y == n && p.x == m) {
 			answer = Math.min(answer,cnt+1);
 			return;
@@ -57,7 +57,7 @@ public class 미로탐색 {
 			int y = p.y + dy[i];
 			if(0 <= y && y <= n && 0 <= x && x <= m) {
 				if(arr[y][x] == 1 && !visited[y][x]) {
-					point ptr = new point(x, y);
+					Point04 ptr = new Point04(x, y);
 					cnt++;
 					visited[y][x] = true;
 					dfs(arr,n,m,ptr,cnt);
@@ -80,17 +80,17 @@ public class 미로탐색 {
 	}
 
 	private static void bfs(int[][] arr, int n, int m) {
-		Queue<point> queue = new LinkedList<>();
-		queue.offer(new point(0, 0));
+		Queue<Point04> queue = new LinkedList<>();
+		queue.offer(new Point04(0, 0));
 		while(!queue.isEmpty()) {
-			point ptr = queue.poll();
+			Point04 ptr = queue.poll();
 			for(int i=0;i<4;++i) {
 				
 				int x = ptr.x + dx[i];
 				int y = ptr.y + dy[i];
 				if(0 <= y && y <= n && 0 <= x && x <= m) {
 					if(arr[y][x] == 1 && visited[y][x] == 0) {
-						point p = new point(x, y);
+						Point04 p = new Point04(x, y);
 						
 						int d = visited[ptr.y][ptr.x];
 						visited[y][x] = d+1;

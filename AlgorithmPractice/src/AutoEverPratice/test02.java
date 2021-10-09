@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
 
-public class t1 {
+public class test02 {
 	public static Set<String> set;
 	public static boolean[] solution(String[] a) {
         boolean[] answer = new boolean[a.length];

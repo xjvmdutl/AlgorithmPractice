@@ -2,7 +2,7 @@ package AutoEverPratice;
 
 import java.util.HashSet;
 
-public class t {
+public class test01 {
 	public static boolean[] visit;
 	public static HashSet<Integer> set;
 	public static int solution(int[][] dice) {

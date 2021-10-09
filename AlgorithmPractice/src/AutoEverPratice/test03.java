@@ -2,7 +2,7 @@ package AutoEverPratice;
 
 import java.util.Arrays;
 
-public class t2 {
+public class test03 {
 	  public static int[] solution(int[] m, int[] b) {
         int[] answer = new int[m.length];
         int cnt = 0;

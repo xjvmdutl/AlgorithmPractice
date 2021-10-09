@@ -14,16 +14,16 @@ public class º°Âï±â9 {
 
 	private static String solution(int n) {
 		StringBuilder sb = new StringBuilder();
-		for(int i=1;i<=n;++i) {
-			for(int j=1;j<i;++j) {
+		for(int i=0;i<n;++i) {
+			for(int j=0;j<i;++j) {
 				sb.append(" ");
 			}
-			for(int j=(n-i+1)*2;j>1;--j) {
+			for(int j=(n-i)*2;j>1;--j) {
 				sb.append("*");
 			}
 			sb.append("\n");
 		}
-		for(int i=n-1;i>0;--i) {
+		for(int i=n-2;i>=0;--i) {
 			for(int j=1;j<i;++j) {
 				sb.append(" ");
 			}

@@ -1,31 +1,24 @@
 package baekjoon.greedy;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class °Å½º¸§µ· {
 
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int money = sc.nextInt();
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		int money = Integer.parseInt(reader.readLine());
 		System.out.println(solution(1000-money));
 		
 	}
 
 	private static int solution(int money) {
-		int cnt = 500;
+		int[] moneys = {500,100,50,10,5,1};
 		int returnMoneyCount = 0;
-		for(int i=5;i>=0;--i) {
-			if(money >= cnt) {
-				returnMoneyCount += money/cnt;
-				money %= cnt;
-			}
-			if(money == 0)
-				break;
-			if(i % 2 == 0) {
-				cnt /= 2;
-			}else {
-				cnt /= 5;
-			}
+		for(int i=0;i<moneys.length;++i) {
+			returnMoneyCount += money/moneys[i];
+			money %= moneys[i];
 		}
 		return returnMoneyCount;
 	}

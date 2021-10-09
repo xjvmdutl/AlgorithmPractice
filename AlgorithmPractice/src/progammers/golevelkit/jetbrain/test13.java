@@ -18,7 +18,7 @@ class Truck{
 	}
 	
 }
-public class test3 {
+public class test13 {
 	public long solution(int a, int b, int[] g, int[] s, int[] w, int[] t) {
         long answer = 0;
         int gold = 0;
