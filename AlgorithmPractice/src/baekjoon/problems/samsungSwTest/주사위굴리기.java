@@ -4,11 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
-class Map{
+class Map01{
 	int x;
 	int y;
 	int dir;
-	public Map(int x,int y,int dir) {
+	public Map01(int x,int y,int dir) {
 		this.x = x;
 		this.y = y;
 		this.dir = dir;
@@ -49,7 +49,7 @@ public class 주사위굴리기 {
 	}
 
 	private static void bfs(int[][] map, int[] arr, int n, int m, int k, int x, int y) {
-		Map maps = new Map(x, y,5);
+		Map01 maps = new Map01(x, y,5);
 		for(int i=0;i<arr.length;++i) {
 			int dir = arr[i] - 1;
 			int diceDir = maps.dir;
@@ -116,7 +116,7 @@ public class 주사위굴리기 {
 					dice[change] = map[ny][nx];
 					map[ny][nx] = 0;
 				}
-				maps = new Map(nx, ny, newDiceDir);	
+				maps = new Map01(nx, ny, newDiceDir);	
 			}
 		}
 	}

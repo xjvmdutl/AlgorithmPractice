@@ -15,7 +15,6 @@ public class Æò¹üÇÑ¹è³¶ {
  			str = sc.nextLine();
  			arr[i][0] = Integer.parseInt(str.split(" ")[0]);
  			arr[i][1] = Integer.parseInt(str.split(" ")[1]);	
-		
  		}
  		System.out.println(solution(arr,k));
 	}
