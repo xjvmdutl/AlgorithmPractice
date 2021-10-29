@@ -41,11 +41,14 @@ public class ½ÇÆÐÀ² {
         return answer;
     }
 	public static void main(String[] args) {
+		//N : 5
+		//stages : [1,2,2,1,3]
+		//result : [3,2,1,4,5]
 		int[] sta1 = {1,1,1};
 		int n1 = 5;
 		int[] r1 = solution(n1,sta1);
 		int[] sta2 = {4,4,4,4,4};
-		int n2 = 4;
+		int n2 = 5;
 		int[] r2 = solution(n2,sta2);
 	}
 	

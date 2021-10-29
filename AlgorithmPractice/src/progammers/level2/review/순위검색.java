@@ -25,9 +25,7 @@ public class 순위검색 {
 		 for(int i=0;i<4*3*3*3; ++i) {
 			 scoreList.add(new ArrayList<>());
 		 }//108개 짜리 크리 리스트를 만들었어
-		 for(String str : info) {
-			 String[] word = str.split(" ");
-		 }
+		
 		 for(String str : info) {
 			 String[] word = str.split(" ");
 			 int[] arr = {wordMap.get(word[0]) * 3 * 3 * 3
@@ -36,7 +34,7 @@ public class 순위검색 {
 					 ,wordMap.get(word[3])
 					 };
 			 int score = Integer.parseInt(word[4]);
-			 for(int i=0;i<(1<<4);++i) {//1~16개
+			 for(int i=0;i<16;++i) {//1~16개
 				 int idx = 0;
 				 for(int j=0;j<4;++j) {
 					 if((i & (1<<j)) != 0) {

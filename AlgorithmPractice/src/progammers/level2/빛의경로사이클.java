@@ -25,7 +25,7 @@ public class 빛의경로사이클 {
         int[] answer= new int[list.size()];
         Collections.sort(list);
         for(int i=0;i<list.size();++i) {
-        	answer[i] =list.get(i);
+        	answer[i] = list.get(i);
         }
         
         return answer;

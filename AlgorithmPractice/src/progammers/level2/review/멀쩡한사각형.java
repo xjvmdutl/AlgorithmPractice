@@ -2,12 +2,13 @@ package progammers.level2.review;
 
 
 public class 멀쩡한사각형 {
-	public static long solution(int w, int h) {
+	 public static long solution(int w, int h) {
         long answer = 0;
-        long n = gcd(w,h);
-        return (w*h) - (((long) w / n) + ((long) h / n) - 1) * n;
+        long gcd = gcd(w, h);
+        answer = (long)w * (long)h - ((long)w + (long)h - gcd);
+        return answer;
     }
-	private static long gcd(long x, long y) {
+    private static long gcd(long x, long y) {
 		if(x == 0)
 			return y;
 		else
@@ -16,9 +17,9 @@ public class 멀쩡한사각형 {
 	public static void main(String[] args) {
 		//W	H	result
 		//8	12	80
-		int w = 8;
-		int h = 12;
-		System.out.println(solution(100000000,100000000));
+		int w = 3;
+		int h = 5;
+		System.out.println(solution(w,h));
 	}
 
 }
