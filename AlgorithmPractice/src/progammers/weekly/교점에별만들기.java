@@ -36,6 +36,7 @@ public class 교점에별만들기 {
         		long c = line[j][0];
         		long d = line[j][1];
         		long f = line[j][2];
+        		
         		double variable1 = (double)(b*f-e*d)/(a*d - b*c);
         		double variable2 = (double)(e*c-a*f)/(a*d - b*c);
         		if ((variable1 == Math.floor(variable1)) && !Double.isInfinite(variable1)
@@ -78,8 +79,9 @@ public class 교점에별만들기 {
 		System.out.println(solution(line2));
 		int[][] line3 = {{1, -1, 0}, {2, -1, 0}};
 		System.out.println(solution(line3));
-		int[][] line4 = {{1, -1, 0}, {2, -1, 0}, {4, -1, 0}};
+		int[][] line4 = {{100000, 100000, 100000}, {100000, 100000, 100000}, {4, -1, 0}};
 		System.out.println(solution(line4));
+		
 	}
 
 }

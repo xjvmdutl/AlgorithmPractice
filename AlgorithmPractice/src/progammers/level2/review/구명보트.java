@@ -14,9 +14,7 @@ public class 구명보트 {
         		n--;
         	}
         	answer++;
-        	
         }
-        
         return answer;
     }
 	public static void main(String[] args) {
