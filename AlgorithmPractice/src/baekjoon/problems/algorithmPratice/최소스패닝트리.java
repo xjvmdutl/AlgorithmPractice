@@ -3,6 +3,8 @@ package baekjoon.problems.algorithmPratice;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 class Spaning{
 	int start;
@@ -21,9 +23,13 @@ public class 최소스패닝트리 {
 		StringTokenizer tokens = new StringTokenizer(reader.readLine());
 		int v = Integer.parseInt(tokens.nextToken());
 		int e = Integer.parseInt(tokens.nextToken());
-		
+		List<Spaning> list = new ArrayList<>();
 		for(int i=0;i<e;++i) {
-			
+			tokens = new StringTokenizer(reader.readLine());
+			int start = Integer.parseInt(tokens.nextToken());
+			int end = Integer.parseInt(tokens.nextToken());
+			int weight = Integer.parseInt(tokens.nextToken());
+			list.add(new Spaning(start, end, weight));
 		}
 	}
 
