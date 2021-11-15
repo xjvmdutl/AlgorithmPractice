@@ -33,6 +33,7 @@ public class 음식물피하기 {
 			int y = Integer.parseInt(tokens.nextToken())-1;
 			int x = Integer.parseInt(tokens.nextToken())-1;
 			map[y][x] = '#';
+			
 		}
 		System.out.println(solution(map,n,m));
 	}
