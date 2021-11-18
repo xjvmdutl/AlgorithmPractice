@@ -1,4 +1,4 @@
-package progammers.golevelkit.jetbrain;
+package progammers.jetbrain;
 
 public class test22 {
 	 public static int[] solution(int n, long left, long right) {

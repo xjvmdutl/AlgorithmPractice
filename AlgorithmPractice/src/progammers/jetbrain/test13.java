@@ -1,4 +1,4 @@
-package progammers.golevelkit.jetbrain;
+package progammers.jetbrain;
 
 import java.util.PriorityQueue;
 import java.util.Queue;

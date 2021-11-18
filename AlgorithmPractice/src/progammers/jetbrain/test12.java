@@ -1,4 +1,4 @@
-package progammers.golevelkit.jetbrain;
+package progammers.jetbrain;
 
 import java.util.ArrayList;
 import java.util.Collections;
