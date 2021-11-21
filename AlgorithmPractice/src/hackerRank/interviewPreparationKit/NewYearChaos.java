@@ -13,7 +13,6 @@ import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
 public class NewYearChaos {
-	public static boolean[] visit;
     public static void minimumBribes(List<Integer> q) {
         int answer = 0;
         
