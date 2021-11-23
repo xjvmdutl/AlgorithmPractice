@@ -23,7 +23,6 @@ public class NQueen {
 		}
 	}
 	private static boolean isPossible(int col) {
-		
 		for(int i=0;i<col;++i) {//현재열까지 다 체크
 			if(visit[col] == visit[i]) {//같은 행이면 안된다
 				return false;
