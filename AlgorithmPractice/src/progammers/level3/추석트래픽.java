@@ -8,52 +8,49 @@ public class 추석트래픽 {
         int answer = 0;
         int[] startOfTimes = new int[lines.length];
         int[] endOfTimes = new int[lines.length];
-        init(startOfTimes,endOfTimes,lines);
+        fn_init(lines,startOfTimes,endOfTimes);
         for(int i=0;i<lines.length;++i) {
-        	int startOfSection = startOfTimes[i];
-        	int endOfSection = startOfSection + 1000;
+        	int startSection = startOfTimes[i];
+        	int endSection = startSection + 1000;
         	int count = 0;
         	for(int j=0;j<lines.length;++j) {
-        		if(startOfSection <= startOfTimes[j] && startOfTimes[j] < endOfSection) {
+        		if(startSection <= startOfTimes[j] && startOfTimes[j] < endSection) {
         			count++;
-        		}else if(startOfSection <= endOfTimes[j] && endOfTimes[j] < endOfSection) {
+        		}else if(startSection <= endOfTimes[j] && endOfTimes[j] < endSection) {
         			count++;
-        		}else if(startOfTimes[j] <= startOfSection && endOfSection <= endOfTimes[j]) {
+        		}else if(startOfTimes[j] <= startSection && endSection <= endOfTimes[j]) {
         			count++;
         		}
         	}
-        	answer = Math.max(count, answer);
+        	answer = Math.max(answer, count);
         }
         for(int i=0;i<lines.length;++i) {
-        	int startOfSection = endOfTimes[i];
-        	int endOfSection = startOfSection + 1000;
+        	int startSection = endOfTimes[i];
+        	int endSection = startSection + 1000;
         	int count = 0;
         	for(int j=0;j<lines.length;++j) {
-        		if(startOfSection <= startOfTimes[j] && startOfTimes[j] < endOfSection) {
+        		if(startSection <= startOfTimes[j] && startOfTimes[j] < endSection) {
         			count++;
-        		}else if(startOfSection <= endOfTimes[j] && endOfTimes[j] < endOfSection) {
+        		}else if(startSection <= endOfTimes[j] && endOfTimes[j] < endSection) {
         			count++;
-        		}else if(startOfTimes[j] <= startOfSection && endOfSection <= endOfTimes[j]) {
+        		}else if(startOfTimes[j] <= startSection && endSection <= endOfTimes[j]) {
         			count++;
         		}
         	}
-        	answer = Math.max(count, answer);
+        	answer = Math.max(answer, count);
         }
         return answer;
     }
-	private static void init(int[] startOfTimes, int[] endOfTimes, String[] lines) {
+	private static void fn_init(String[] lines, int[] startOfTimes, int[] endOfTimes) {
 		for(int i=0;i<lines.length;++i) {
-			String[] log = lines[i].split(" ");
+			String[] times = lines[i].split(" ");
 			int endTime = 0;
-			String[] time = log[1].split(":");
-			int hour = Integer.parseInt(time[0]);
-			int mitune = Integer.parseInt(time[1]);
-			int second = (int)(Double.parseDouble(time[2])* 1000);
-			endTime += hour * 60 * 60 * 1000;
-			endTime += mitune * 60 * 1000;
-			endTime += second;
-			int processingTime = (int)(Double.parseDouble(log[2].substring(0, log[2].length() - 1)) * 1000);
-			int startTime = endTime - processingTime + 1;
+			String[] splitTime = times[1].split(":");
+			endTime += Integer.parseInt(splitTime[0]) * 60 * 60 * 1000;
+			endTime += Integer.parseInt(splitTime[1]) * 60 *  1000;
+			endTime += (int)(Double.parseDouble(splitTime[2]) * 1000);
+			int processTime = (int)(Double.parseDouble(times[2].substring(0,times[2].length()-1)) * 1000);
+			int startTime = endTime - processTime + 1;
 			startOfTimes[i] = startTime;
 			endOfTimes[i] = endTime;
 		}
