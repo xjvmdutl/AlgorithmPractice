@@ -51,6 +51,7 @@ public class 불량사용자 {
 		String[] user_id2 = {"frodo", "fradi", "crodo", "abc123", "frodoc"};
 		String[] user_id3 = {"frodo", "fradi", "crodo", "abc123", "frodoc"};
 		
+		
 		String[] banned_id1 = {"fr*d*", "abc1**"};
 		String[] banned_id2 = {"*rodo", "*rodo", "******"};
 		String[] banned_id3 = {"fr*d*", "*rodo", "******", "******"};

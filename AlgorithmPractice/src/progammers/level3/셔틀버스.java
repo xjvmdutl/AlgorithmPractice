@@ -13,8 +13,6 @@ class Time implements Comparable<Time>{
 			hour--;
 			mitune += 60;
 		}
-		
-		
 		this.hour = hour;
 		this.mitune = mitune;
 	}
