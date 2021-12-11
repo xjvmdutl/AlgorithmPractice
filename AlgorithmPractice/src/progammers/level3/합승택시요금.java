@@ -79,6 +79,20 @@ public class гу╫бец╫ц©Д╠щ {
 		, {2, 3, 22}
 		, {1, 6, 25}};
 		System.out.println(solution(n1,s1,a1,b1,fare1));
+		int n3 = 6;
+		int s3 = 4;
+		int a3 = 5;
+		int b3 = 6;
+		int[][] fare3 = {
+		{2,6,6}
+		, {6,3,7}
+		, {4,6,7}
+		, {6,5,11}
+		, {2,5,12}
+		, {5,3,20}
+		, {2,4,8}
+		, {4,3,9}};
+		System.out.println(solution(n3,s3,a3,b3,fare3));
 	}
 
 }
