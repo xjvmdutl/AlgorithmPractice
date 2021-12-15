@@ -1,6 +1,7 @@
 package progammers.level3;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -25,11 +26,16 @@ public class 불량사용자 {
 			for(String str : answer) {
 				tmpList.add(str);
 			}
+			Collections.sort(tmpList);
+			if(set.contains(tmpList)) {
+				return;
+			}
+			/*
 			for(List<String> list : set) {
 				if(tmpList.containsAll(list)) {
 					return;
 				}
-			}
+			}*/
 			set.add(tmpList);
 			return;
 		}

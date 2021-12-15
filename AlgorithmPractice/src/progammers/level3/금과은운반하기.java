@@ -9,20 +9,20 @@ public class 금과은운반하기 {
         
         while(start <= end) {
         	long mid = (start + end) / 2;
-        	long gold = 0;
-            long silver = 0;
+        	long goldMax = 0;
+            long silverMax = 0;
             long add = 0;
         	for(int i=0;i<t.length;++i) {
         		long move = mid / (t[i] * 2);
         		if(mid % (t[i] * 2) >= t[i]) {
         			move++;
         		}
-        		gold += (g[i] < move * w[i]) ? g[i] : move * w[i];
-        		silver += (s[i] < move * w[i]) ? s[i] : move * w[i];
+        		goldMax += (g[i] < move * w[i]) ? g[i] : move * w[i];
+        		silverMax += (s[i] < move * w[i]) ? s[i] : move * w[i];
         		add += (g[i] + s[i] < move * w[i]) ? g[i] + s[i] : move * w[i];
         		
         	}
-        	if(gold >= a && silver >= b && add >= a + b) {
+        	if(goldMax >= a && silverMax >= b && add >= a + b) {
                 end = mid - 1;
                 answer = Math.min(mid, answer);
             }else {
