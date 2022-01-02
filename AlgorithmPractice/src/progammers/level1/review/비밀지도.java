@@ -2,25 +2,14 @@ package progammers.level1.review;
 
 public class 비밀지도 {
 	public static String[] solution(int n, int[] arr1, int[] arr2) {
-        String[] answer = new String[n];
-        for(int i=0;i<n;++i) {
-        	int tmp = arr1[i] | arr2[i];
-        	String str = Integer.toBinaryString(tmp);
-        	StringBuilder sb = new StringBuilder();
-        	for(int j=n-str.length();j>0;--j) {
-        		sb.append(" ");
-        	}
-        	for(int j=0;j<str.length();++j) {
-        		if(str.charAt(j) == '1') {
-        			sb.append("#");
-        		}else {
-        			sb.append(" ");
-        		}
-        	}
-        	answer[i] = sb.toString();
+		String[] answer = new String[n];
+        for(int i=0;i<arr1.length;++i){
+            int now = arr1[i] | arr2[i];
+            StringBuilder sb = new StringBuilder(Integer.toBinaryString(now));
+            while(sb.length() < n)
+                sb.insert(0,"0");
+            answer[i] = sb.toString().replaceAll("0"," ").replaceAll("1","#");
         }
-        
-        
         return answer;
     }
 	public static void main(String[] args) {

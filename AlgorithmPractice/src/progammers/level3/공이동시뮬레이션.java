@@ -1,67 +1,32 @@
 package progammers.level3;
 
 public class 공이동시뮬레이션 {
-	public static int[] dx = {-1,1,0,0};
-	public static int[] dy = {0,0,-1,1};
+	public static int[] reverseDir = {1,0,3,2};
+	public static int[] dir = {-1,1,-1,1};
 	public static long solution(int n, int m, int x, int y, int[][] queries) {
-        long answer = 0;
-        m(queries);
-        for(int i=0;i<n;++i) {
-        	for(int j=0;j<m;++j) {
-        		
-        		
-        		
-        		if(move(queries,x,y,n,m,i,j)) {
-        			answer++;
-        		}
+        int[] point = {y,y+1,x,x+1};
+        int[] limit = {m,m,n,n};
+        int[] boundary = {0,m,0,n};
+        for(int i=queries.length-1;i>=0;--i) {
+        	int command = queries[i][0];
+        	int dx = queries[i][1];
+        	int reverse = reverseDir[command];  
+        	point[reverse] += dir[reverse] * dx;
+        	point[reverse] = Math.max(Math.min(point[reverse], limit[reverse]), 0);
+        	
+        	//현재 위치가 벽에 부딫히지 않을때
+        	if(point[command] != boundary[command]) {
+        		point[command] += dir[reverse] * dx;
+            	point[command] = Math.max(Math.min(point[command], limit[command]), 0);
+        	}
+        	//경계를 벗어났을때
+        	if(point[0] == m || point[1] == 0 || point[2] == n || point[3] == 0) {
+        		return 0L;
         	}
         }
-        return answer;
+        return (1L * point[1] - point[0]) * (1L * point[3] - point[2]);
 	}
-	private static void m(int[][] queries) {
-		int startX = 0;
-		int startY = 0;
-		for(int i=0;i<queries.length;++i) {
-			int nx = startX + (dx[queries[i][0]] * queries[i][1]);
-			int ny = startY + (dy[queries[i][0]] * queries[i][1]);		
-			startX = nx;
-			startY = ny;
-		}
-		System.out.println();
-	}
-	private static boolean move(int[][] queries, int x, int y, int n, int m, int i, int j) {
-		
-		return false;
-	}
-	/*
-	private static boolean move(int[][] queries, int y, int x, int n, int m, int startY, int startX) {
-		for(int i=0;i<queries.length;++i) {
-			int nx = startX + (dx[queries[i][0]] * queries[i][1]);
-			int ny = startY + (dy[queries[i][0]] * queries[i][1]);		
-			if(!isRange(nx,ny,n,m)) {
-				if(queries[i][0] == 0) {
-					nx = 0;
-				}else if(queries[i][0] == 1) {
-					nx = m-1;
-				}else if(queries[i][0] == 2) {
-					ny = 0;
-				}else if(queries[i][0] == 3) {
-					ny = n-1;
-				}
-			}
-			startX = nx;
-			startY = ny;
-		}
-		if(startX == x && startY == y)
-			return true;
-		else
-			return false;
-	}
-	*/
-	private static boolean isRange(int nx, int ny, int n, int m) {
-		return 0 <= nx && nx < m && 0 <= ny && ny < n;
-		
-	}
+	
 	public static void main(String[] args) {
 		//n	m	x	y	queries	result
 		//2	2	0	0	[[2,1],[0,1],[1,1],[0,1],[2,1]]	4
