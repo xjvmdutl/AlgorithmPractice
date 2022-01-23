@@ -3,6 +3,7 @@ package progammers.level3.review;
 import java.util.LinkedList;
 import java.util.Queue;
 
+
 public class 네트워크 {
 	public static boolean[] visit;
 	public static int solution(int n, int[][] computers) {
