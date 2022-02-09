@@ -83,8 +83,6 @@ public class 미확인도착지 {
 					break;
 			}
 		}
-		if(sb.length() < 1)
-			return "";
 		return sb.delete(sb.length()-1,sb.length()).toString();
 	}
 	
