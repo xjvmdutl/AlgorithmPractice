@@ -7,13 +7,13 @@ import java.util.Arrays;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
-class Stock{
-	int index;
-	int length;
-	public Stock(int index, int length){
-		this.index = index;
-		this.length = length;
-	}
+class Pillar {
+    int left;
+    int height;
+    public Pillar(int left, int height) {
+        this.left = left;
+        this.height = height;
+    }
 }
 public class 창고다각형 {
 
@@ -31,39 +31,41 @@ public class 창고다각형 {
 
 	private static int solution(int[][] arr, int n) {
 		Arrays.sort(arr, (o1,o2)->o1[0] - o2[0]);
-		Stack<Stock> leftStk = new Stack<>();
-		Stack<Stock> rightStk = new Stack<>();
+		Stack<Pillar> rightStack = new Stack<Pillar>();
+		Stack<Pillar> leftStack = new Stack<Pillar>();
 		int maxHeight = 0;
-		for(int i = 0; i < n; i++) {
-            if(maxHeight < arr[i][1]) {
-                maxHeight = arr[i][1];
-                leftStk.push(new Stock(arr[i][0], arr[i][1]));        
-            }
-        }
+		for(int i=0;i<arr.length;++i) {
+			if(maxHeight < arr[i][1]) {
+				maxHeight = arr[i][1];
+				leftStack.push(new Pillar(arr[i][0], arr[i][1]));
+			}
+		}
 		maxHeight = 0;
-		for(int i = n - 1; i >= 0; i--) {
-            if(maxHeight < arr[i][1]) {
-                maxHeight = arr[i][1];
-                rightStk.push(new Stock(arr[i][0], arr[i][1]));
-            }
-        }
-		int answer = (rightStk.peek().index - leftStk.peek().index + 1) * rightStk.peek().length;
-		int beforeLeft = leftStk.pop().index;
-		while(!leftStk.isEmpty()) {
-            int left = leftStk.peek().index;
-            int height = leftStk.peek().length;
+		for(int i=arr.length-1;i>=0;--i) {
+			if(maxHeight < arr[i][1]) {
+				maxHeight = arr[i][1];
+				rightStack.push(new Pillar(arr[i][0], arr[i][1]));
+			}
+		}
+		int answer = (rightStack.peek().left - leftStack.peek().left + 1) * rightStack.peek().height;
+		int beforeLeft = leftStack.pop().left;
+		while(!leftStack.isEmpty()) {
+            int left = leftStack.peek().left;
+            int height = leftStack.peek().height;
             answer += (beforeLeft - left) * height;
             beforeLeft = left;
-            leftStk.pop();
+            leftStack.pop();
         }
-		int beforeRight = rightStk.pop().index;
-		while(!rightStk.isEmpty()) {
-            int left = rightStk.peek().index;
-            int height = rightStk.peek().length;
+		int beforeRight = rightStack.pop().left;
+		while(!rightStack.isEmpty()) {
+            int left = rightStack.peek().left;
+            int height = rightStack.peek().height;
             answer += (left - beforeRight) * height;
             beforeRight = left;
-            rightStk.pop();
+            rightStack.pop();
         }
+		
+		
 		return answer;
 	}
 
