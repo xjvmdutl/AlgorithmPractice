@@ -3,35 +3,44 @@ package baekjoon.workbook.today;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class ²ÞÆ²²ÞÆ²È£¼®¾Ö¹ú·¹È¿À²¼º {
+public class ¿Õº¹ {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer tokens = new StringTokenizer(reader.readLine());
 		int n = Integer.parseInt(tokens.nextToken());
 		long k = Long.parseLong(tokens.nextToken());
-		long[] arr = new long[n+1];
+		int[] arr = new int[n];
 		tokens = new StringTokenizer(reader.readLine());
-		for(int i=1;i<=n;++i) {
-			arr[i] = Long.parseLong(tokens.nextToken());
+		for(int i=0;i<n;++i) {
+			arr[i] = Integer.parseInt(tokens.nextToken());
 		}
 		System.out.println(solution(arr, n, k));
 	}
 
-	private static long solution(long[] arr, int n, long k) {
-		long[] dp = new long[n+1];
-		long sum = 0;
-		for(int r=1, l=0;r<=n;++r) {
-			sum += arr[r];
-			dp[r] = dp[r-1];
-			while(sum >= k) {
-				dp[r] = Math.max(dp[r], dp[l] + sum - k);
-				sum -= arr[++l];
+	private static int solution(int[] arr, int n, long k) {
+		long sum = Arrays.stream(arr).sum();
+		if(k >= sum) {
+			k-= sum;
+			for(int i=n-1;i>=0;--i) {
+				k -= arr[i];
+				if(k < 0) {
+					return i+1;
+				}
+			}
+		}else {
+			for(int i=0;i<n;++i) {
+				k -= arr[i];
+				if(k < 0) {
+					return i+1;
+				}
 			}
 		}
-		return dp[n];
+		
+		return -1;
 	}
 
 }
