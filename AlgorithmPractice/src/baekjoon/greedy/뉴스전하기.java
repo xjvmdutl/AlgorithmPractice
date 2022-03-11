@@ -39,7 +39,7 @@ public class 뉴스전하기 {
 		System.out.println(solution(list,n,0));
 	}
 
-	private static int solution(List<Info>[] list, int n,int idx) {
+	private static int solution(List<Info>[] list, int n,  int idx) {
 		int result = 0; 
         for(int i=0; i<list[idx].size(); i++) {
             int next = list[idx].get(i).node;
