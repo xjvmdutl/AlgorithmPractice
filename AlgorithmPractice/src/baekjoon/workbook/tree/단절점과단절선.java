@@ -23,6 +23,7 @@ public class 단절점과단절선 {
 			int end = Integer.parseInt(tokens.nextToken()) - 1;
 			map[start].add(end);
 			map[end].add(start);
+			
 			arr[i][0] =start;
 			arr[i][1] =end;
 		}
