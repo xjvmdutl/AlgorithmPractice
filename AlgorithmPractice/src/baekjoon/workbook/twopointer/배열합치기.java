@@ -48,6 +48,7 @@ public class 배열합치기 {
 			}
 			if(a[aStartPoint] < b[bStartPoint]) {
 				sb.append(a[aStartPoint++] + " ");
+				
 			}else {
 				sb.append(b[bStartPoint++] + " ");
 			}
