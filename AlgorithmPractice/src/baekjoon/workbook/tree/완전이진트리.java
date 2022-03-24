@@ -30,17 +30,15 @@ public class 완전이진트리 {
 	private static String solution(int[] arr, int n) {
 		StringBuilder sb = new StringBuilder();
 		Queue<BinaryTree> que = new LinkedList<>();
-		que.offer(new BinaryTree(0, (int) (Math.pow(2, n) - 1)));
-		for(int k=0;k<n;++k) {
+		que.offer(new BinaryTree(0, (int) Math.pow(2, n) - 1));
+		for(int i=1;i<=n;++i) {
 			int size = que.size();
-			for(int i=0;i<size;++i) {
-				BinaryTree tree = que.poll();
-				int mid = (tree.left + tree.right) / 2;
+			for(int j=0;j<size;++j) {
+				BinaryTree binaryTree = que.poll();
+				int mid = (binaryTree.left + binaryTree.right) / 2;
 				sb.append(arr[mid] + " ");
-				if(tree.left != tree.right) {
-					que.offer(new BinaryTree(tree.left, mid - 1));
-					que.offer(new BinaryTree(mid + 1, tree.right));
-				}
+				que.offer(new BinaryTree(binaryTree.left, mid - 1));
+				que.offer(new BinaryTree(mid + 1, binaryTree.right));
 			}
 			sb.append("\n");
 		}
