@@ -34,9 +34,43 @@ public class 합이0인네정수 {
 				CD[index++] = arr[i][2] + arr[j][3];
 			}	
 		}
-		Arrays.sort(CD);
 		
+		Arrays.sort(CD);
+		for(int result : AB) {
+			int right = upperCase(CD, -result);
+			int left = lowerCase(CD, -result);
+			answer += right - left;
+		}
 		return answer;
+	}
+
+	private static int lowerCase(int[] CD, int result) {
+		int start = 0;
+		int end = CD.length - 1;
+		while(start <= end) {
+			int mid = (start + end) / 2;
+			if(CD[mid] < result) {
+				start = mid + 1;
+			}else {
+				end = mid - 1;
+				
+			}
+		}
+		return start;
+	}
+
+	private static int upperCase(int[] CD, int result) {
+		int start = 0;
+		int end = CD.length - 1;
+		while(start <= end) {
+			int mid = (start + end) / 2;
+			if(CD[mid] <= result) {
+				start = mid + 1;
+			}else {
+				end = mid - 1;
+			}
+		}
+		return start;
 	}
 
 }
