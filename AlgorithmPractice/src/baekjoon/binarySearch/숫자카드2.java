@@ -19,6 +19,7 @@ public class 숫자카드2 {
 		int m = Integer.parseInt(reader.readLine());
 		long[] search = new long[m];
 		tokens = new StringTokenizer(reader.readLine());
+		
 		for(int i=0;i<m;++i) {
 			search[i] = Long.parseLong(tokens.nextToken());
 		}
