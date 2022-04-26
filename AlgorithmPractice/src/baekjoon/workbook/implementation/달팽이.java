@@ -11,6 +11,7 @@ public class ´ŞÆØÀÌ {
 		int n = Integer.parseInt(reader.readLine());
 		int find = Integer.parseInt(reader.readLine());
 		System.out.println(solution(n, find));
+	
 	}
 
 	private static String solution(int n, int find) {
