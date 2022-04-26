@@ -101,6 +101,7 @@ public class 배열돌리기 {
 	private static void reverseRotationRow(int[][] map, int[][] result, int n) {
 		for(int i=0;i<n;++i) {
 			result[n-i-1][i] = map[n/2][i];
+			
 		}
 	}
 	
