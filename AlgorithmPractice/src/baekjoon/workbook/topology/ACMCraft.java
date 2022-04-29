@@ -27,6 +27,7 @@ public class ACMCraft {
 				builds[i] = Integer.parseInt(tokens.nextToken());
 			}
 			for(int i = 0;i < k;++i) {
+				
 				tokens = new StringTokenizer(reader.readLine());
 				int x = Integer.parseInt(tokens.nextToken()) - 1;
 				int y = Integer.parseInt(tokens.nextToken()) - 1;
