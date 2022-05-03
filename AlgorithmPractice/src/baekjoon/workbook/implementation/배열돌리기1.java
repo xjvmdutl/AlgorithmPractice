@@ -6,7 +6,8 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class 배열돌리기1 {
-
+	public static int[] dx = {1, 0, -1, 0};
+	public static int[] dy = {0, 1, 0, -1};
 	public static void main(String[] args) throws IOException {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer tokens = new StringTokenizer(reader.readLine());
@@ -24,61 +25,44 @@ public class 배열돌리기1 {
 	}
 
 	private static String solution(int[][] map, int n, int m, int r) {
-		int min = Math.min(n, m);
-		for(int i=0;i<min/2;++i) {
-			int startRow = i;
-			int startCol = i;
-			int endRow = n - i - 1;
-			int endCol = m - i - 1;
-			int count = (endRow - startRow + 1) * (endCol - startCol + 1);
-			int cnt = modR(r, count);
-			for(int j=0;j<cnt;++j) {
-				rotation(map, startRow, startCol, endRow, endCol);
+		int groupValue = Math.min(n, m) / 2;
+		for(int j=0;j<r;++j) {
+			for(int i=0;i<groupValue;++i) {
+				rotation(map, i, n, m);
 			}
 		}
+		
 		
 		return print(map, n, m);
 	}
 	
 	
 
+	private static void rotation(int[][] map, int i, int n, int m) {
+		int x = i;
+		int y = i;
+		int value = map[y][x];
+		int dir = 0;
+		while(dir < 4) {
+			int nx = x + dx[dir];
+			int ny = y + dy[dir];
+			if(isRange(nx, ny, n, m, i)) {
+				map[y][x] = map[ny][nx];
+				x = nx;
+				y = ny;
+			}else {
+				dir++;
+			}
+		}
+		map[i + 1][i] = value;
+	}
+
+	private static boolean isRange(int nx, int ny, int n, int m, int i) {
+		return i <= nx && nx < m-i && i <= ny && ny < n - i;
+	}
+
 	private static int modR(int r, int count) {
 		return r % count;
-	}
-
-	private static void rotation(int[][] map, int startRow, int startCol, int endRow, int endCol) {
-		int start = map[startRow][startCol];
-		leftStartRow(map[startRow], startCol, endCol);
-		upEndCol(map, startRow, endRow, endCol);
-		rightEndRow(map[endRow], startCol, endCol);
-		underStartCol(map, startRow, endRow, startCol);
-		
-		map[startRow+1][startCol] = start;
-	}
-	
-
-	private static void leftStartRow(int[] map, int startCol, int endCol) {
-		for(int i=startCol;i<endCol;++i) {
-			map[i] = map[i+1];
-		}
-	}
-
-	private static void upEndCol(int[][] map, int startRow, int endRow, int endCol) {
-		for(int i=startRow;i<endRow;++i) {
-			map[i][endCol] = map[i+1][endCol];
-		}
-	}
-	
-	private static void rightEndRow(int[] map, int startCol, int endCol) {
-		for(int i=endCol;i>startCol;--i) {
-			map[i] = map[i-1];
-		}
-	}
-	
-	private static void underStartCol(int[][] map, int startRow, int endRow, int startCol) {
-		for(int i=endRow;i>startRow;--i) {
-			map[i][startCol] = map[i-1][startCol];
-		}
 	}
 
 	private static String print(int[][] map, int n, int m) {
