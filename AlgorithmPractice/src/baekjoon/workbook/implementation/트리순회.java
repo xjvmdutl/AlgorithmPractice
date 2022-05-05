@@ -3,18 +3,19 @@ package baekjoon.workbook.implementation;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 public class 트리순회 {
 	private static int answer;
 	private static int count;
-	private static boolean finish;
 	static class BinaryTreeNode {
 		int left;
 		int right;
-		public BinaryTreeNode() {
-			left = -1;
-			right = -1;
+		public BinaryTreeNode(int left, int right) {
+			this.left = left;
+			this.right = right;
 		}
 	}
 	public static void main(String[] args) throws NumberFormatException, IOException {
@@ -33,66 +34,57 @@ public class 트리순회 {
 	private static int solution(int[][] arr, int n) {
 		answer = 0;
 		count = 0;
-		BinaryTreeNode[] map = createTree(n);
+		List<BinaryTreeNode>[] map = createTree(n);
 		InterLink(map, arr, n);
-		preOrder(map, 0, n);
+		List<Integer> inOrder = new ArrayList<>();
+		preOrder(map, inOrder, 1, 0, true);
+		preOrder(map, inOrder, 1, 0, false);
 		return answer;
 	}
 	
 
-	private static void preOrder(BinaryTreeNode[] map, int now, int n) {
-		int left = map[now].left;
-		int right = map[now].right;
-		count++;
-		if(isFinish(n)) {
-			finish = true;
-		}
-		if(!isExist(left)) {
-			answer++;
-			preOrder(map, left, n);
-			if(!finish) {
-				answer++;	
+	private static void preOrder(List<BinaryTreeNode>[] map, List<Integer> inOrder, int now, int pa, boolean flag) {
+		for(BinaryTreeNode node : map[now]) {
+			if(node.left != -1) {
+				preOrder(map, inOrder, node.left, now, flag);
+				if(!flag) {
+					count++;
+				}
 			}
-		}
-		if(!isExist(right)) {
-			answer++;
-			preOrder(map, right, n);
-			if(!finish) {
-				answer++;
+			if(flag) {
+				inOrder.add(now);
+			}else {
+				if(inOrder.get(inOrder.size()-1) == now) {
+					answer = count;
+					return;
+				}
+				count++;
 			}
+			if(node.right != -1) {
+				preOrder(map, inOrder, node.right, now, flag);
+				if(!flag) {
+					count++;
+				}
+			}
+			
 		}
-		
 	}
 
-	private static boolean isFinish(int n) {
-		return count == n;
-	}
-
-	private static BinaryTreeNode[] createTree(int n) {
-		BinaryTreeNode[] map = new BinaryTreeNode[n]; 
-		for(int i=0;i<n;++i) {
-			map[i] = new BinaryTreeNode();
+	private static List<BinaryTreeNode>[] createTree(int n) {
+		List<BinaryTreeNode>[] map = new ArrayList[n+1]; 
+		for(int i=0;i<=n;++i) {
+			map[i] = new ArrayList<>();
 		}
 		return map;
 	}
 
-	private static void InterLink(BinaryTreeNode[] map, int[][] arr, int n) {
+	private static void InterLink(List<BinaryTreeNode>[] map, int[][] arr, int n) {
 		for(int i=0;i<n;++i) {
-			int node = arr[i][0] - 1;
+			int node = arr[i][0];
 			int left = arr[i][1];
 			int right = arr[i][2];
-			if(!isExist(left)) {
-				map[node].left = left - 1;
-			}
-			if(!isExist(right)) {
-				map[node].right = right - 1;
-			}
+			map[node].add(new BinaryTreeNode(left, right));
 		}
 	}
-	private static boolean isExist(int number) {
-		return number == -1;
-	}
-
-	
 
 }
