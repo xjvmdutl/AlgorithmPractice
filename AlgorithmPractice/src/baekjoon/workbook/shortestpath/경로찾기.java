@@ -21,11 +21,11 @@ public class 경로찾기 {
 	}
 
 	private static String solution(boolean[][] map, int n) {
-		floydWassal(map, n);
+		floydWashal(map, n);
 		return getResult(map, n);
 	}
 
-	private static void floydWassal(boolean[][] map, int n) {
+	private static void floydWashal(boolean[][] map, int n) {
 		for(int k=0;k<n;++k) {
 			for(int i=0;i<n;++i) {
 				for(int j=0;j<n;++j) {
