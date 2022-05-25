@@ -6,17 +6,19 @@ import java.io.InputStreamReader;
 
 public class FourSquares {
 	private static int solution(int n) {
-		int answer = 0;
-		for(int i=0;i * i <=n;++i) {
-			for(int j=0; j * j <=n - (i * i); ++j) {
-				for(int k=0; k * k <=n - (i * i) - (j * j);++k) {
-					for(int l=0;l * l <= n - (i * i) - (j * j) - (k * k);++l) {
-						
-					}	
-				}	
-			}	
+		
+		int[] dp = new int[n + 1];
+		dp[1] = 1;
+		int min = 0;
+		for(int i=2; i<= n; ++i) {
+			min = Integer.MAX_VALUE;
+			for(int j=1;j * j <= i; ++j) {
+				int temp = i - j * j;
+				min = Math.min(min, dp[temp]);
+			}
+			dp[i] = min + 1;
 		}
-		return answer;
+		return dp[n];
 	}
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
