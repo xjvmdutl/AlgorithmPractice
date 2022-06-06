@@ -22,6 +22,7 @@ public class 부분삼각수열 {
 	private static int solution(int[] arr, int n) {
 		int answer = 0;
 		
+		
 		return answer;
 	}
 
